@@ -1,39 +1,33 @@
 <template>
     <div>
-        <!--    <div>{{ name }}</div>-->
-        <!--    <div>{{ vasyJob }}</div>-->
-        <!--    <button @click="sayHello">Hello</button>-->
-        <!--    <button @click="sayHi">Hi</button>-->
+        <CreateComponent></CreateComponent>
         <div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Job</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="person in persons">
-                    <th scope="row">{{ person.id }}</th>
-                    <td>{{ person.name }}</td>
-                    <td>{{ person.age }}</td>
-                    <td>{{ person.job }}</td>
-                </tr>
-                </tbody>
-            </table>
-
-<!--            <div>{{ person.name }}</div>-->
-<!--            <div>{{ person.age }}</div>-->
-<!--            <div>{{ person.job }}</div>-->
+<!--            <table class="table">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">ID</th>-->
+<!--                    <th scope="col">Name</th>-->
+<!--                    <th scope="col">Age</th>-->
+<!--                    <th scope="col">Job</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr v-for="person in persons">-->
+<!--                    <th scope="row">{{ person.id }}</th>-->
+<!--                    <td>{{ person.name }}</td>-->
+<!--                    <td>{{ person.age }}</td>-->
+<!--                    <td>{{ person.job }}</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
         </div>
         <!--    <SinglePostComponent></SinglePostComponent>-->
     </div>
 </template>
 
 <script>
-import SinglePostComponent from "./SinglPostComponent"
+import SinglePostComponent from "./SinglePostComponent"
+import CreateComponent from "./CreateComponent"
 
 export default {
     name: "PostComponent",
@@ -50,7 +44,7 @@ export default {
 
     methods: {
         getPosts(){
-            axios.get('/persons')
+            axios.get('/people')
             .then( res => {
                 this.persons = res.data
                 console.log(res)
@@ -62,13 +56,14 @@ export default {
     },
 
     computed: {
-        vasyJob() {
-            return this.name + 'work in bool'
-        }
+        // vasyJob() {
+        //     return this.name + 'work in bool'
+        // }
     },
 
     components: {
-        SinglePostComponent
+        SinglePostComponent,
+        CreateComponent,
     }
 }
 </script>
