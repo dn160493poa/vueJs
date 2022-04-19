@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Person\IndexController;
 use App\Http\Controllers\Person\StoreController;
-use App\Http\Controllers\PersonsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Person', 'prefix' => 'people'], function (){
     Route::post('/', [StoreController::class, '__invoke'])->name('persons.store');
+    Route::get('/', [IndexController::class, '__invoke'])->name('persons.index');
 });

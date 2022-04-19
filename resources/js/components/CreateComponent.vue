@@ -31,11 +31,11 @@ export default {
     methods: {
         addPerson() {
             axios.post('/api/people', {name: this.name, age: this.age, job: this.job})
-                    .then(res => {
-                        this.name = null
-                        this.age = null
-                        this.job = null
-                    })
+                .then(res => {
+                    this.name = null
+                    this.age = null
+                    this.job = null
+                })
         }
     }
 
