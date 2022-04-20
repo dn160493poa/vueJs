@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Person\DeleteController;
 use App\Http\Controllers\Person\IndexController;
 use App\Http\Controllers\Person\StoreController;
 use App\Http\Controllers\Person\UpdateController;
@@ -25,4 +26,5 @@ Route::group(['namespace' => 'Person', 'prefix' => 'people'], function (){
     Route::get('/', [IndexController::class, '__invoke'])->name('persons.index');
     Route::post('/', [StoreController::class, '__invoke'])->name('persons.store');
     Route::patch('/{person}', [UpdateController::class, '__invoke'])->name('persons.update');
+    Route::delete('/{person}', [DeleteController::class, '__invoke'])->name('persons.delete');
 });
