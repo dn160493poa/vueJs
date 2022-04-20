@@ -26,15 +26,20 @@ export default {
         }
     },
 
-    mounted() {},
-
     methods: {
         updatePerson(id) {
             this.$parent.editPersonId = null
             axios.patch(`/api/people/${id}`, {'name': this.name, 'age': this.age, 'job': this.job})
-                    .then(res => {
-                        this.$parent.getPeople()
-                    })
+                .then(res => {
+                    this.$parent.getPeople()
+                })
+        },
+
+        deletePerson(id){
+            axios.delete(`/api/people/${id}`)
+                .then(res => {
+                    this.$parent.getPeople()
+                })
         },
     }
 
