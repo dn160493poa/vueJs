@@ -1,14 +1,10 @@
 <template>
-    <div>
-        SinglePost
-    </div>
+    <div>Tag components</div>
 </template>
 
 <script>
 export default {
-    name: "SinglePostComponent",
-
-
+name: "TagComponent"
 }
 </script>
 
