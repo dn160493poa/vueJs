@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link :to="{name: 'person.index'}">People</router-link>
+        Index
         <router-view></router-view>
     </div>
 </template>
