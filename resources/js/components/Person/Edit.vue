@@ -22,8 +22,8 @@ import router from "../../router";
 export default {
     name: "Edit",
 
-    data(){
-        return{
+    data() {
+        return {
             name: null,
             age: null,
             job: null,
@@ -35,20 +35,20 @@ export default {
     },
 
     methods: {
-        getPerson(){
+        getPerson() {
             axios.get(`/api/people/${this.$route.params.id}`)
-            .then( res => {
-                this.name = res.data.name
-                this.age = res.data.age
-                this.job = res.data.job
-            })
+                .then(res => {
+                    this.name = res.data.name
+                    this.age = res.data.age
+                    this.job = res.data.job
+                })
         },
 
-        updatePerson(){
+        updatePerson() {
             axios.patch(`/api/people/${this.$route.params.id}`, {'name': this.name, 'age': this.age, 'job': this.job})
-            .then( res => {
-                router.push({ name: 'person.show' })
-            })
+                .then(res => {
+                    router.push({name: 'person.show', params: {'id': this.$route.params.id}})
+                })
         }
     }
 }
