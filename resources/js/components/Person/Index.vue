@@ -7,6 +7,7 @@
                 <th scope="col">Age</th>
                 <th scope="col">Job</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -16,6 +17,9 @@
                 <td>{{ person.job }}</td>
                 <td>
                     <router-link :to="{ name: 'person.edit', params: { 'id': person.id }}">Edit</router-link>
+                </td>
+                <td>
+                    <input @click.prevent="deletePerson(person.id)" type="submit" value="Delete" class="btn btn-primary">
                 </td>
             </tr>
             </tbody>
@@ -44,6 +48,13 @@ export default {
                     this.people = res.data
                 });
         },
+
+        deletePerson(id){
+            axios.delete(`/api/people/${id}`)
+                .then( res => {
+                    this.getPeople()
+                })
+        }
     }
 
 
