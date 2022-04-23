@@ -30,21 +30,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Show",
-  data: function data() {
-    return {
-      person: null
-    };
-  },
   mounted: function mounted() {
-    this.getPerson();
+    this.$store.dispatch('getPerson', this.$route.params.id);
   },
-  methods: {
-    getPerson: function getPerson() {
-      var _this = this;
-
-      axios.get("/api/people/".concat(this.$route.params.id)).then(function (res) {
-        _this.person = res.data.data;
-      });
+  computed: {
+    person: function person() {
+      return this.$store.getters.person;
     }
   }
 });
@@ -138,15 +129,15 @@ var render = function () {
   return _vm.person
     ? _c("div", [
         _c("div", [
-          _vm._v("\n        Name : " + _vm._s(this.person.name) + "\n    "),
+          _vm._v("\n        Name : " + _vm._s(_vm.person.name) + "\n    "),
         ]),
         _vm._v(" "),
         _c("div", [
-          _vm._v("\n        Age : " + _vm._s(this.person.age) + "\n    "),
+          _vm._v("\n        Age : " + _vm._s(_vm.person.age) + "\n    "),
         ]),
         _vm._v(" "),
         _c("div", [
-          _vm._v("\n        Job : " + _vm._s(this.person.job) + "\n    "),
+          _vm._v("\n        Job : " + _vm._s(_vm.person.job) + "\n    "),
         ]),
         _vm._v(" "),
         _c(
@@ -156,7 +147,7 @@ var render = function () {
               "router-link",
               {
                 attrs: {
-                  to: { name: "person.edit", params: { id: this.person.id } },
+                  to: { name: "person.edit", params: { id: _vm.person.id } },
                 },
               },
               [_vm._v("Edit")]
