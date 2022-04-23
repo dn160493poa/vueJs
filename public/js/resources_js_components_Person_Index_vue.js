@@ -40,6 +40,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Index",
   data: function data() {
@@ -55,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/people').then(function (res) {
-        _this.people = res.data;
+        _this.people = res.data.data;
       });
     },
     deletePerson: function deletePerson(id) {
@@ -162,7 +164,21 @@ var render = function () {
         "tbody",
         _vm._l(_vm.people, function (person) {
           return _c("tr", [
-            _c("td", [_vm._v(_vm._s(person.name))]),
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: { name: "person.edit", params: { id: person.id } },
+                    },
+                  },
+                  [_vm._v(_vm._s(person.name))]
+                ),
+              ],
+              1
+            ),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(person.age))]),
             _vm._v(" "),

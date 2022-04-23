@@ -43,7 +43,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/people/".concat(this.$route.params.id)).then(function (res) {
-        _this.person = res.data;
+        _this.person = res.data.data;
       });
     }
   }

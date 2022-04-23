@@ -12,7 +12,9 @@
             </thead>
             <tbody>
             <tr v-for="person in people">
-                <td>{{ person.name }}</td>
+                <td>
+                    <router-link :to="{ name: 'person.edit', params: { 'id': person.id }}">{{ person.name }}</router-link>
+                </td>
                 <td>{{ person.age }}</td>
                 <td>{{ person.job }}</td>
                 <td>
@@ -45,7 +47,7 @@ export default {
         getPeople(){
             axios.get('/api/people')
                 .then( res => {
-                    this.people = res.data
+                    this.people = res.data.data
                 });
         },
 
